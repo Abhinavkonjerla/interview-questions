@@ -1,0 +1,57 @@
+/******************************************************************************
+
+                            program for MaxReducedstring using stack.
+
+*******************************************************************************/
+
+
+
+
+#include <stdio.h>
+#include<stdbool.h>
+
+char stk[100];
+int topIndex = -1;
+
+void push(char c)
+{
+    stk[++topIndex] = c;
+}
+
+void pop()
+{
+    topIndex--;
+}
+
+char top()
+{
+    return stk[topIndex];
+}
+
+bool empty()
+{
+    return topIndex == -1;
+}
+
+
+int main()
+{
+    char str[101] = "";
+    scanf("%s",str);
+    for(int i=0; str[i] != '\0'; i++)
+    {
+        if(empty()==true)
+            push(str[i]);
+        else if( str[i] != top())
+            push(str[i]);
+        else
+            pop();
+    }
+    if(empty()==true)
+        printf("Empty String\n");
+    else
+    {
+        for(int i=0;i<=topIndex;i++)
+            printf("%c",stk[i]);
+    }
+}
